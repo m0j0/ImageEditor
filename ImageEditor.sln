@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageEditor", "ImageEditor\ImageEditor.csproj", "{8AEFC357-74A6-4B73-AACA-BFE0A3706645}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageEditor.WPF", "ImageEditor.WPF\ImageEditor.WPF.csproj", "{8AEFC357-74A6-4B73-AACA-BFE0A3706645}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageEditor.Core", "ImageEditor.Core\ImageEditor.Core.csproj", "{B872FDAD-C649-4F02-A08D-8EE1A85F272B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8AEFC357-74A6-4B73-AACA-BFE0A3706645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AEFC357-74A6-4B73-AACA-BFE0A3706645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AEFC357-74A6-4B73-AACA-BFE0A3706645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B872FDAD-C649-4F02-A08D-8EE1A85F272B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B872FDAD-C649-4F02-A08D-8EE1A85F272B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B872FDAD-C649-4F02-A08D-8EE1A85F272B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B872FDAD-C649-4F02-A08D-8EE1A85F272B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
