@@ -8,9 +8,19 @@ namespace ImageEditor.ViewModels
 {
     public class MainVm : ViewModelBase
     {
+        #region Constructors
+
+        public MainVm()
+        {
+            ImageVm = GetViewModel<ImageVm>();
+        }
+
+        #endregion
         #region Properties
 
         public string DisplayName => "Image editor";
+
+        public ImageVm ImageVm { get; }
 
         #endregion
     }
