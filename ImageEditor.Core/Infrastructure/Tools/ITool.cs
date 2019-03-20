@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ImageEditor.Infrastructure.Input;
 
 namespace ImageEditor.Infrastructure.Tools
 {
@@ -10,9 +11,9 @@ namespace ImageEditor.Infrastructure.Tools
 
         //void PerformMouseEnter();
         //void PerformMouseLeave();
-        void ProcessMouseMove();
-        void ProcessMouseUp();
-        void ProcessMouseDown();
-
+        void ProcessMouseMove(MouseArgs args);
+        void ProcessMouseUp(MouseArgs args);
+        void ProcessMouseDown(MouseArgs args);
+        //void ProcessMouseWheel();
     }
 }

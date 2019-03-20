@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using ImageEditor.Infrastructure.Tools;
+using ImageEditor.Interfaces;
+using MugenMvvmToolkit;
 using MugenMvvmToolkit.Models;
 using MugenMvvmToolkit.ViewModels;
 
@@ -19,13 +21,17 @@ namespace ImageEditor.ViewModels
 
         #region Constructors
 
-        public ToolbarVm()
+        public ToolbarVm(IImageProvider imageProvider)
         {
+            Should.NotBeNull(imageProvider, nameof(imageProvider));
+
             SelectToolCommand = new RelayCommand<ITool>(SelectTool);
 
-            PanTool = new PaintbrushTool(null);
-            ZoomTool = new PaintbrushTool(null);
-            PaintbrushTool = new PaintbrushTool(null);
+            var toolContext = new ToolContext(imageProvider);
+
+            PanTool = new PaintbrushTool(toolContext);
+            ZoomTool = new PaintbrushTool(toolContext);
+            PaintbrushTool = new PaintbrushTool(toolContext);
 
             SelectedTool = PaintbrushTool;
         }

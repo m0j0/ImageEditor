@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ImageEditor.Infrastructure.Input;
+using MugenMvvmToolkit;
 
 namespace ImageEditor.Infrastructure.Tools
 {
@@ -8,32 +10,50 @@ namespace ImageEditor.Infrastructure.Tools
     {
         #region Constructors
 
-        protected ToolBase(ToolContext toolContext)
+        protected ToolBase(ToolContext context)
         {
-            ToolContext = toolContext;
+            Should.NotBeNull(context, nameof(context));
+            Context = context;
         }
 
         #endregion
 
         #region Properties
 
-        protected ToolContext ToolContext { get; }
+        public abstract string Name { get; }
+
+        protected ToolContext Context { get; }
 
         #endregion
 
         #region Methods
 
-        public abstract string Name { get; }
+        public void ProcessMouseMove(MouseArgs args)
+        {
+            OnMouseMove(args);
+        }
 
-        public void ProcessMouseMove()
+        public void ProcessMouseUp(MouseArgs args)
+        {
+            OnMouseUp(args);
+        }
+
+        public void ProcessMouseDown(MouseArgs args)
+        {
+            OnMouseDown(args);
+        }
+
+
+        protected virtual void OnMouseMove(MouseArgs args)
         {
         }
 
-        public void ProcessMouseUp()
+
+        protected virtual void OnMouseUp(MouseArgs args)
         {
         }
 
-        public void ProcessMouseDown()
+        protected virtual void OnMouseDown(MouseArgs args)
         {
         }
 
