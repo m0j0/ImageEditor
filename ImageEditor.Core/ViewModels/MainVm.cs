@@ -13,14 +13,18 @@ namespace ImageEditor.ViewModels
         public MainVm()
         {
             ImageVm = GetViewModel<ImageVm>();
+            ToolbarVm = GetViewModel<ToolbarVm>();
         }
 
         #endregion
+
         #region Properties
 
         public string DisplayName => "Image editor";
 
         public ImageVm ImageVm { get; }
+
+        public ToolbarVm ToolbarVm { get; }
 
         #endregion
     }
