@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Text;
 using ImageEditor.Infrastructure.Rendering;
 using ImageEditor.Interfaces;
+using ImageEditor.Interfaces.ViewModels;
 
 namespace ImageEditor.Infrastructure.Tools
 {
     public sealed class ToolContext
     {
-        public ToolContext(IImageProvider imageProvider)
+        public ToolContext(IImageVm imageVm)
         {
-            ImageProvider = imageProvider;
+            ImageVm = imageVm;
         }
 
-        public IImageProvider ImageProvider { get; }
+        public IImageVm ImageVm { get; }
 
         public IDisposable BeginDraw()
         {
-            return ImageProvider.Image.BeginDraw();
+            return ImageVm.Image.BeginDraw();
         }
     }
 }

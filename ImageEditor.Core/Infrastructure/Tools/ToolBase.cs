@@ -43,11 +43,9 @@ namespace ImageEditor.Infrastructure.Tools
             OnMouseDown(args);
         }
 
-
         protected virtual void OnMouseMove(MouseArgs args)
         {
         }
-
 
         protected virtual void OnMouseUp(MouseArgs args)
         {

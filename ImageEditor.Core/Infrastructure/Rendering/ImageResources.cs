@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ImageEditor.Infrastructure.Drawing;
+using ImageEditor.Infrastructure.Input;
 using SharpDX;
 
 namespace ImageEditor.Infrastructure.Rendering

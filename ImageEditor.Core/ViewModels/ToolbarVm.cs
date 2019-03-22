@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Input;
 using ImageEditor.Infrastructure.Tools;
 using ImageEditor.Interfaces;
+using ImageEditor.Interfaces.ViewModels;
 using MugenMvvmToolkit;
 using MugenMvvmToolkit.Models;
 using MugenMvvmToolkit.ViewModels;
@@ -15,25 +16,52 @@ namespace ImageEditor.ViewModels
         #region Fields
 
         private ITool _selectedTool;
-        
 
         #endregion
 
         #region Constructors
 
-        public ToolbarVm(IImageProvider imageProvider)
+        public ToolbarVm(IImageVm imageVm)
         {
-            Should.NotBeNull(imageProvider, nameof(imageProvider));
+            Should.NotBeNull(imageVm, nameof(imageVm));
 
             SelectToolCommand = new RelayCommand<ITool>(SelectTool);
 
-            var toolContext = new ToolContext(imageProvider);
+            var toolContext = new ToolContext(imageVm);
 
             PanTool = new PaintbrushTool(toolContext);
             ZoomTool = new PaintbrushTool(toolContext);
             PaintbrushTool = new PaintbrushTool(toolContext);
 
-            SelectedTool = PaintbrushTool;
+            Tools = new[]
+            {
+                PanTool,
+                ZoomTool,
+                PaintbrushTool
+            };
+            SelectedTool = Tools[0];
+
+            imageVm.MouseUp += (sender, args) =>
+            {
+                foreach (var tool in Tools)
+                {
+                    tool.ProcessMouseUp(args);
+                }
+            };
+            imageVm.MouseDown += (sender, args) =>
+            {
+                foreach (var tool in Tools)
+                {
+                    tool.ProcessMouseDown(args);
+                }
+            };
+            imageVm.MouseMove += (sender, args) =>
+            {
+                foreach (var tool in Tools)
+                {
+                    tool.ProcessMouseMove(args);
+                }
+            };
         }
 
         #endregion
@@ -48,7 +76,10 @@ namespace ImageEditor.ViewModels
         }
 
         #endregion
+
         #region Properties
+
+        public IReadOnlyList<ITool> Tools { get; }
 
         public PaintbrushTool PanTool { get; }
         public PaintbrushTool ZoomTool { get; }

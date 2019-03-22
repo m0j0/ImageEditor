@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 using ImageEditor.Infrastructure.Rendering;
 using ImageEditor.Interfaces;
+using ImageEditor.Interfaces.ViewModels;
 using MugenMvvmToolkit.Interfaces.Models;
 using MugenMvvmToolkit.ViewModels;
 
 namespace ImageEditor.ViewModels
 {
-    public class MainVm : ViewModelBase, IImageProvider
+    public class MainVm : ViewModelBase
     {
         #region Constructors
 
         public MainVm()
         {
-            IocContainer.BindToConstant(typeof(IImageProvider), this);
-
             ImageVm = GetViewModel<ImageVm>();
+            IocContainer.BindToConstant(typeof(IImageVm), ImageVm);
+
             ToolbarVm = GetViewModel<ToolbarVm>();
         }
 
@@ -29,12 +30,6 @@ namespace ImageEditor.ViewModels
         public ImageVm ImageVm { get; }
 
         public ToolbarVm ToolbarVm { get; }
-
-        #endregion
-
-        #region Implementation of IImageProvider
-
-        ImageModel IImageProvider.Image => ImageVm.Image;
 
         #endregion
     }
